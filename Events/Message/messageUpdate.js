@@ -1,4 +1,5 @@
 const { MessageEmbed, Message, WebhookClient } = require("discord.js");
+require('dotenv').config();
 
 module.exports = {
     name: "messageUpdate",
@@ -26,7 +27,7 @@ module.exports = {
         .setFooter({text: `ID: ${newMessage.author.id}`})
         .setTimestamp()
 
-        new WebhookClient({url: "https://discord.com/api/webhooks/979785665300557824/S5h7KwcGpSDnaZMarExWtKAmxX9Ay15y7WLO3N5FW84hQEmACVwHUG_H14mOyLSXhxD8"}
+        new WebhookClient({url: process.env.messageWebhook}
         ).send({embeds: [Log]}).catch((err) => console.log(err));
     }
 }

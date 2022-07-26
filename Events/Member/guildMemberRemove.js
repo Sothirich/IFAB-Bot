@@ -1,4 +1,5 @@
 const { MessageEmbed, GuildMember, WebhookClient } = require("discord.js");
+require('dotenv').config();
 
 module.exports = {
     name: "guildMemberRemove",
@@ -21,7 +22,7 @@ module.exports = {
         .setFooter({text: `ID: ${user.id}`})
         .setTimestamp()
 
-        new WebhookClient({url: "https://discord.com/api/webhooks/979750114065256468/uDSNXOBEM7dVB2qRJsykQloGKYPrNWmN9etDVvByQp_9_fDFV_Edu56uxypstCk9tleO"}
+        new WebhookClient({url: process.env.welcomeWebhook}
         ).send({embeds: [Leave]}).catch((err) => console.log(err));
     }
 }
