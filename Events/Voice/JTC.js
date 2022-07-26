@@ -10,7 +10,7 @@ module.exports = {
         const { member, guild } = newState;
         const oldChannel = oldState.channel;
         const newChannel = newState.channel;
-        const joinToCreate = "856438676404699171";
+        const joinToCreate = "1001406906763587614";
 
         if(oldChannel !== newChannel && newChannel && newChannel.id === joinToCreate) {
             const voiceChannel = await guild.channels.create(member.user.tag, {
@@ -23,7 +23,7 @@ module.exports = {
             });
 
             client.voiceGenerator.set(member.id, voiceChannel.id);
-            await newChannel.permissionOverwrites.edit(member, {CONNECT: false});
+            await newChannel.permissionOverwrites.edit(member, {CONNECT: null});
             setTimeout(() => newChannel.permissionOverwrites.delete(member), 30 * 1000);
 
             return setTimeout(() => member.voice.setChannel(voiceChannel), 500);
