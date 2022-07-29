@@ -492,9 +492,20 @@ module.exports = {
                             .setTitle(`${currentsong.name}`)
                             .setURL(currentsong.url)
                             .setColor("RANDOM")
-                            .addField("QueueStatus", status(queue))
-                            .addField("SongStatus", status1(queue))
-                            .addField(`Download Song:`, `>>> [\`Click here\`](${currentsong.streamURL})`, true)
+                            .addFields(
+                                {
+                                    name: "QueueStatus",
+                                    value: `${status(queue)}`
+                                },
+                                {
+                                    name: "SongStatus",
+                                    value: `${status1(queue)}`
+                                },
+                                {
+                                    name: "Download Song:",
+                                    value: `>>> [\`Click here\`](${currentsong.streamURL})`
+                                },
+                            )
                             .setThumbnail(currentsong.thumbnail)
                             .setFooter({ text: `${guild.name}`, iconURL: guild.iconURL({ dynamic: true }) })
                             .setTimestamp()

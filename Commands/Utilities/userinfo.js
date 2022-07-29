@@ -16,10 +16,26 @@ module.exports = {
         .setColor("RANDOM")
         .setAuthor({name: target.user.tag, iconURL: target.user.avatarURL({dynamic: true, size: 512})})
         .setThumbnail(target.user.avatarURL({dynamic: true, size: 512}))
-        .addField("ID", `${target.user.id}`)
-        .addField("Roles", `${target.roles.cache.map(r => r).join(" ").replace("@everyone", " ") || "None"}`)
-        .addField("Member Since", `<t:${parseInt(target.joinedTimestamp / 1000)}:R>`, true)
-        .addField("Discord User Since", `<t:${parseInt(target.user.createdTimestamp / 1000)}:R>`, true)
+        .addFields(
+            {
+                name: "ID",
+                value: `${target.user.id}`
+            },
+            {
+                name: "Roles",
+                value: `${target.roles.cache.map(r => r).join(" ").replace("@everyone", " ") || "None"}`
+            },
+            {
+                name: "Member Since",
+                value: `<t:${parseInt(target.joinedTimestamp / 1000)}:R>`,
+                inline: true
+            },
+            {
+                name: "Discord User Since",
+                value: `<t:${parseInt(target.user.createdTimestamp / 1000)}:R>`,
+                inline: true
+            },
+        )
         
         interaction.reply({embeds: [Response], ephemeral: true})
     }
