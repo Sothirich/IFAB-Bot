@@ -12,8 +12,16 @@ client.distube
             .setTitle("Playing :notes: " + song.name)
             .setURL(song.url)
             .setColor("RANDOM")
-            .addField("Duration", `\`${song.formattedDuration}\``)
-            .addField("QueueStatus", status(queue))
+            .addFields(
+                {
+                    name: "Duration",
+                    value: `\`${song.formattedDuration}\``
+                },
+                {
+                    name: "QueueStatus",
+                    value: `${status(queue)}`
+                },
+            )
             .setThumbnail(song.thumbnail)
             .setFooter({ text: `Requested by: ${song.user.tag}`, iconURL: song.user.displayAvatarURL({ dynamic: true }) })
         ]
@@ -25,8 +33,16 @@ client.distube
             .setTitle("Added :thumbsup: " + song.name)
             .setURL(song.url)
             .setColor("RANDOM")
-            .addField(`${queue.songs.length - 1} Songs in the Queue`, `Duration: \`${queue.formattedDuration}\``)
-            .addField("Duration", `\`${song.formattedDuration}\``)
+            .addFields(
+                {
+                    name: `${queue.songs.length - 1} Songs in the Queue`,
+                    value: `Duration: \`${queue.formattedDuration}\``
+                },
+                {
+                    name: "Duration",
+                    value: `\`${song.formattedDuration}\``
+                },
+            )
             .setThumbnail(song.thumbnail)
             .setFooter({ text: `Requested by: ${song.user.tag}`, iconURL: song.user.displayAvatarURL({ dynamic: true }) })
         ]
@@ -38,9 +54,20 @@ client.distube
             .setTitle("Playing Playlist :notes: " + playlist.name + ` - \`[${playlist.songs.length} songs]\``)
             .setURL(playlist.url)
             .setColor("RANDOM")
-            .addField("Current Track: ", `[${song.name}](${song.url})`)
-            .addField("Duration", `\`${playlist.formattedDuration}\``)
-            .addField(`${queue.songs.length} Songs in the Queue`, `Duration: \`${format(queue.duration * 1000)}\``)
+            .addFields(
+                {
+                    name: "Current Track:",
+                    value: `[${song.name}](${song.url})`
+                },
+                {
+                    name: "Duration",
+                    value: `\`${playlist.formattedDuration}\``
+                },
+                {
+                    name: `${queue.songs.length} Songs in the Queue`,
+                    value: `Duration: \`${format(queue.duration * 1000)}\``
+                },
+            )
             .setThumbnail(playlist.thumbnail.url)
             .setFooter({ text: `Requested by: ${song.user.tag}`, iconURL: song.user.displayAvatarURL({ dynamic: true }) })
         ]
@@ -52,8 +79,16 @@ client.distube
             .setTitle("Added Playlist :thumbsup: " + playlist.name + ` - \`[${playlist.songs.length} songs]\``)
             .setURL(playlist.url)
             .setColor("RANDOM")
-            .addField("Duration", `\`${playlist.formattedDuration}\``)
-            .addField(`${queue.songs.length - 1} Songs in the Queue`, `Duration: \`${queue.formattedDuration}\``)
+            .addFields(
+                {
+                    name: "Duration",
+                    value: `\`${playlist.formattedDuration}\``
+                },
+                {
+                    name: `${queue.songs.length - 1} Songs in the Queue`,
+                    value: `Duration: \`${queue.formattedDuration}\``
+                },
+            )
             .setThumbnail(playlist.thumbnail.url)
         ]
     }).then(msg => { setTimeout(() => msg.delete().catch(e => console.log(e)), 20000) })
