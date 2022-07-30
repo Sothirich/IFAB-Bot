@@ -83,7 +83,7 @@ module.exports = {
             case "rename": {
                 const newName = options.getString("name");
                 if (newName.length > 22 || newName.length < 1)
-                    interaction.reply({ content: "Name cannot be exceed 22 Character", ephemeral: true });
+                return interaction.reply({ content: "Name cannot be exceed 22 Character", ephemeral: true });
 
                 voiceChannel.edit({ name: newName });
                 interaction.reply({ content: `Channel has been set to **${newName}**`, ephemeral: true });
