@@ -13,7 +13,7 @@ module.exports = {
         const joinToCreate = "1001406906763587614";
 
         if(oldChannel !== newChannel && newChannel && newChannel.id === joinToCreate) {
-            const voiceChannel = await guild.channels.create(member.user.tag, {
+            const voiceChannel = await guild.channels.create('Type /voice for more command', {
                 type: "GUILD_VOICE",
                 parent: newChannel.parent,
                 permissionOverwrites: [
