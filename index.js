@@ -1,10 +1,3 @@
-//alive
-// const express = require('express');
-// const app = express();
-// const port = 4422;
-// app.get('/', (req, res) => res.send('Your bot is alive!'));
-// app.listen(port, () => console.log(`Listening at http://localhost:${port}`));
-
 const { Client, Collection } = require("discord.js");
 const client = new Client({intents: 32767});
 
