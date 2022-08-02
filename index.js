@@ -39,7 +39,7 @@ client.distube = new DisTube(client, {
             },
         }),
         new YtDlpPlugin({
-            update: true
+            update: false
         }),
         new SoundCloudPlugin(),
     ],
