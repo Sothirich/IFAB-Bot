@@ -32,12 +32,12 @@ client.distube = new DisTube(client, {
             },
         }),
         new YtDlpPlugin({
-            update: false
+            update: true
         }),
         new SoundCloudPlugin(),
     ],
     // youtubeCookie --> prevents ERRORCODE: "429"
-    youtubeDL: false,
+    youtubeDL: true,
     updateYouTubeDL: true,
     customFilters: {
         "clear": "dynaudnorm=f=200",
